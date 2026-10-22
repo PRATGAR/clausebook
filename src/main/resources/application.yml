@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:contracts;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+  sql:
+    init:
+      mode: always
+server:
+  port: 8080
+app:
+  dirs:
+    storage-root: ./data/versions
+    exhibit-root: ./data/exhibits
+    signed-root: ./data/signed
+    export-root: ./data/exports
+    work-dir: ./data/work
+  ldap:
+    url: ldap://directory.internal.example:389
+    base-dn: ou=people,dc=acme,dc=example
+  webhook:
+    allowed-host: hooks.acme-contracts.example
+  provider:
+    base-url: https://api.esign-provider.example/v2
+    api-key: ${PROVIDER_API_KEY:}
+  signature:
+    pin-digest: MD5
+  legal-hold:
+    held-contracts: []
